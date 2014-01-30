@@ -24,6 +24,10 @@ public class MLsample {
 			SerialAnalyserController controller = (SerialAnalyserController)PersistenceManager.loadObjectFromFile(annieGapp);
 			System.out.println("Annie initialized");
 			
+			File tools = new File(Gate.getPluginsHome(), "Tools");
+			Gate.getCreoleRegister().registerDirectories(tools.toURI().toURL());
+			ProcessingResource morpher = (ProcessingResource)Factory.createResource("gate.creole.morph.Morph");
+			
 			Gate.getCreoleRegister().registerDirectories(new File( Gate.getPluginsHome(), ANNIEConstants.PLUGIN_DIR ).toURI().toURL());
 			FeatureMap params = Factory.newFeatureMap();
 			ProcessingResource tagger = (ProcessingResource)Factory.createResource("gate.creole.POSTagger", params);
